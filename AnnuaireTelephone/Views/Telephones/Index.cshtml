@@ -1,0 +1,23 @@
+@model IEnumerable<AnnuaireTelephone.Models.Telephone>
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+<h2>Liste des numéros</h2>
+<a class="btn btn-primary" asp-action="Create">Ajouter un numéro</a>
+<form method="get">
+    <div class="form-inline my-2">
+        <label>Client:</label>
+        @Html.DropDownList("clientId", ViewBag.Clients as SelectList, "Tous", new { @class = "form-control mx-2" })
+        <label>Opérateur:</label>
+        @Html.DropDownList("operateur", ViewBag.Operateurs as SelectList, "Tous", new { @class = "form-control mx-2" })
+        <button class="btn btn-secondary">Filtrer</button>
+    </div>
+</form>
+<table class="table">
+    <thead><tr><th>Numéro</th><th>Client</th><th>Opérateur</th></tr></thead>
+    <tbody>
+    @foreach (var tel in Model)
+    {
+        <tr><td>@tel.Numero</td><td>@tel.Client?.Nom</td><td>@tel.Operateur</td></tr>
+    }
+    </tbody>
+</table>

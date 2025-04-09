@@ -1,0 +1,15 @@
+@{
+    ViewBag.Title = "Statistiques";
+    var client = ViewBag.Client as AnnuaireTelephone.Models.Client;
+    var operateur = ViewBag.Operateur;
+}
+
+<h2>Statistiques</h2>
+@if (client != null)
+{
+    <p><strong>Client avec le plus de numéros:</strong> @client.Nom @client.Prenom (@client.Telephones.Count)</p>
+}
+@if (operateur != null)
+{
+    <p><strong>Opérateur avec le plus de numéros:</strong> @operateur.Operateur (@operateur.Count)</p>
+}
